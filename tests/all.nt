@@ -1,0 +1,92 @@
+<http://www.example.com#Oclahoma> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.com#State> .
+_:Bermudas <http://www.example.com#name> "Brahames" .
+<http://www.example.com#Oclahoma> <http://www.example.com#name> "Bahamas"^^<http://strdf.di.uoa.gr/ontology#SemiLinear> .
+<http://www.example.com#Oclahoma> <http://www.example.com#size> "27"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://www.example.com#Oclahoma> <http://www.example.com#actualName> "cat"@en .
+<http://www.example.com#Oclahoma> <http://www.example.com#inXML> "dummy"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral>.
+<http://www.example.com#Oclahoma> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.com#State> .
+_:Bermudas <http://www.example.com#name> "Brahames" .
+<http://www.example.com#Oclahoma> <http://www.example.com#name> "Bahamas"^^<http://strdf.di.uoa.gr/ontology#SemiLinear> .
+<http://www.example.com#Oclahoma> <http://www.example.com#size> "27"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://www.example.com#Oclahoma> <http://www.example.com#actualName> "cat"@en .
+<http://www.example.com#Oclahoma> <http://www.example.com#inXML> "dummy"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral>.
+<http://linkedgeodata.org/triplify/way10062880> <http://linkedgeodata.org/ontology/hasNodes>    <http://linkedgeodata.org/triplify/way10062880/nodes> .
+<http://linkedgeodata.org/triplify/way10062880> <http://www.georss.org/georss/polygon>  "47.9633977 9.3789672 47.9644322 9.3799971 47.9659265 9.3827437 47.9655816 9.3837737 47.9644322 9.384632 47.9633977 9.3844603 47.9630529 9.3834304 47.9613287 9.383602 47.9593745 9.384117 47.9593745 9.3818854 47.9593745 9.3799971 47.9601792 9.3798255 47.960639 9.3806838 47.9614436 9.3799971 47.9621333 9.3799971 47.9624782 9.3786239 47.9633977 9.3789672" .
+<http://linkedgeodata.org/triplify/way10062880> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>       <http://linkedgeodata.org/ontology/NaturalWater> .
+<http://linkedgeodata.org/triplify/way10062880> <http://www.w3.org/2000/01/rdf-schema#label>    "Baggersee" .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_10>        <http://linkedgeodata.org/triplify/node82695399> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_11>        <http://linkedgeodata.org/triplify/node82695400> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_12>        <http://linkedgeodata.org/triplify/node82695401> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_13>        <http://linkedgeodata.org/triplify/node82695402> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_14>        <http://linkedgeodata.org/triplify/node82695403> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_15>        <http://linkedgeodata.org/triplify/node82695404> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_16>        <http://linkedgeodata.org/triplify/node82695406> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_17>        <http://linkedgeodata.org/triplify/node82695269> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_1> <http://linkedgeodata.org/triplify/node82695269> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_2> <http://linkedgeodata.org/triplify/node82695270> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_3> <http://linkedgeodata.org/triplify/node82695271> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_4> <http://linkedgeodata.org/triplify/node82695273> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_5> <http://linkedgeodata.org/triplify/node82695274> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_6> <http://linkedgeodata.org/triplify/node82695275> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_7> <http://linkedgeodata.org/triplify/node82695276> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_8> <http://linkedgeodata.org/triplify/node82695397> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#_9> <http://linkedgeodata.org/triplify/node82695398> .
+<http://linkedgeodata.org/triplify/way10062880/nodes>   <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>       <http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq> .
+<http://linkedgeodata.org/triplify/way10062880> <http://linkedgeodata.org/ontology/hasNodes>  "mpimpi".
+<http://linkedgeodata.org/triplify/way10062880> <http://linkedgeodata.org/ontology/hasNodes>  "mpi, mpi".
+<http://linkedgeodata.org/triplify/way10062880> <http://linkedgeodata.org/ontology/hasNodes>  "one, two , three, four".
+<http://linkedgeodata.org/triplify/way10062880> <http://linkedgeodata.org/ontology/hasNodes>  "one,two , three, four,".
+<http://linkedgeodata.org/triplify/way10062880> <http://linkedgeodata.org/ontology/hasNodes>  "one,two , three, five , ".
+<http://linkedgeodata.org/triplify/way10062880> <http://linkedgeodata.org/ontology/hasNodes>  "mpaklabas gwnia ".
+<http://linkedgeodata.org/triplify/way10062880> <http://linkedgeodata.org/ontology/hasNodes>  "\\ ".
+<http://linkedgeodata.org/triplify/way10062880> <http://linkedgeodata.org/ontology/hasNodes>  "\\".
+<http://linkedgeodata.org/triplify/way10062880> <http://linkedgeodata.org/ontology/hasNodes>  "tis theias\\ sou, karia ".
+<http://linkedgeodata.org/triplify/way10062880> <http://linkedgeodata.org/ontology/hasNodes>  ",".
+<http://linkedgeodata.org/triplify/way29857896> <http://linkedgeodata.org/property/massgis%3AOS_ID> "281-1001" .
+<http://linkedgeodata.org/triplify/way29857896> <http://linkedgeodata.org/property/massgis%3AOS_ID> "281,1001" .
+_:Lolek <http://www.example.com#petName> "cat"^^<http://www.example.com#Dat1> .
+_:Lolek <http://www.example.com#petName> "dog"^^<http://www.example.com#Dat2> .
+_:Lolek <http://www.example.com#petName> "dog"^^<http://www.example.com#Dat1> .
+_:Lolek <http://www.example.com#petName> "dog".
+_:Lolek <http://www.example.com#petAge> "cat"@en .
+_:Lolek <http://www.example.com#petAge> "dog"@ru .
+_:Lolek <http://www.example.com#petAge> "dog"@ru .
+_:Lolek <http://www.example.com#petAge> "dog".
+<http://www.example.com#Oclahoma> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.com#State> .
+<http://www.example.com#Oclahoma> <http://www.example.com#name> "Oclahoma" .
+<http://www.example.com#Oclahoma> <http://www.example.com#size> "27"^^<http://www.w3.org/2001/XMLSchema#integer> .
+_:Bolek <http://www.example.com#residentOf> <http://www.example.com#Oclahoma> .
+_:Bolek <http://www.example.com#firstName> "Bolek"^^<http://strdf.di.uoa.gr/ontology#FirstName> .
+_:Bolek <http://www.example.com#lastName> "Koutroumpas"^^<http://strdf.di.uoa.gr/ontology#FirstName> .
+_:Bolek <http://www.example.com#siblingName> "Lolek".
+_:Lolek <http://www.example.com#petName> "cat"@en .
+_:Lolek <http://www.example.com#plainName> "Lolek".
+_:Lolek <http://www.example.com#inXML> "dummy"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral>.
+_:Lolek <http://www.example.com#lastName> "Koutroumpas"^^<http://strdf.di.uoa.gr/ontology#FirstName> .
+_:Lolek <http://www.example.com#petName> "dog"@en .
+<http://strdf.di.uoa.gr/ontology#Instance1> <http://strdf.di.uoa.gr/ontology#hasGeometry> "POINT(510457.300375 4150059.924838);http://www.opengis.net/def/crs/EPSG/0/2100"^^<http://strdf.di.uoa.gr/ontology#WKT> .
+<http://strdf.di.uoa.gr/ontology#Instance2> <http://strdf.di.uoa.gr/ontology#hasGeometry> "POINT(24.118304 37.497404);http://www.opengis.net/def/crs/EPSG/0/4121"^^<http://strdf.di.uoa.gr/ontology#WKT> .
+<http://strdf.di.uoa.gr/ontology#Instance3> <http://strdf.di.uoa.gr/ontology#hasGeometry> "POINT(24.12 37.5)"^^<http://strdf.di.uoa.gr/ontology#WKT> .
+_:Lolek <http://www.example.com#petAge> "17"^^<http://www.w3.org/2001/XMLSchema#long> .
+_:Lolek <http://www.example.com#petAge> "17"^^<http://www.w3.org/2001/XMLSchema#int> .
+_:Lolek <http://www.example.com#petAge> "12"^^<http://www.w3.org/2001/XMLSchema#short> .
+_:Lolek <http://www.example.com#petAge> "12".
+<http://www.example.com#Oclahoma> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.com#State> .
+_:Bermudas <http://www.example.com#name> "Brahames" .
+<http://www.example.com#Oclahoma> <http://www.example.com#name> "Bahamas"^^<http://strdf.di.uoa.gr/ontology#SemiLinear> .
+<http://www.example.com#Oclahoma> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.com#State> .
+_:Bermudas <http://www.example.com#name> "Brahames" .
+<http://www.example.com#Oclahoma> <http://www.example.com#name> "Bahamas"^^<http://strdf.di.uoa.gr/ontology#SemiLinear> .<http://strdf.di.uoa.gr/ontology#Instance3> <http://strdf.di.uoa.gr/ontology#hasGeometry> "POINT(24.12 37.5)"^^<http://strdf.di.uoa.gr/ontology#WKT> .
+<http://www.di.uoa.gr/lalakis,pwpw> <http://lalakis.com.gr/p> "" .
+<http://www.di.uoa.gr/lalakis,pwpw> <http://lalakis.com.gr/p> "alaLiiii^Mmlalal" .
+<http://linkedgeodata.org/triplify/node622380559> <http://www.w3.org/2000/01/rdf-schema#label> "Papperinsamling, Hermelinparken"@sv .
+<http://ai.di.uoa.gr/da4dte/resource/S2B_32VMP_20200607_0_L2A> <http://ai.di.uoa.gr/da4dte/ontology/hasTimestamp> "2020-06-07T11:03:52.359000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://ai.di.uoa.gr/da4dte/resource/S2A_32VMP_20200622_1_L2A> <http://ai.di.uoa.gr/da4dte/ontology/hasTimestamp> "2020-06-22T11:03:56.014000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://ai.di.uoa.gr/da4dte/resource/S2B_32VMP_20200620_0_L2A> <http://ai.di.uoa.gr/da4dte/ontology/hasTimestamp> "2020-06-20T11:13:49.553000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://ai.di.uoa.gr/da4dte/resource/S2A_35TNJ_20200629_0_L2A> <http://ai.di.uoa.gr/da4dte/ontology/hasTimestamp> "2020-06-29T09:18:17.124000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://ai.di.uoa.gr/da4dte/resource/S2A_35TNJ_20200626_0_L2A> <http://ai.di.uoa.gr/da4dte/ontology/hasTimestamp> "2020-06-26T09:08:21.326000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://ai.di.uoa.gr/da4dte/resource/S2A_35TNJ_20200609_1_L2A> <http://ai.di.uoa.gr/da4dte/ontology/hasTimestamp> "2020-06-09T09:18:18.236000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://ai.di.uoa.gr/da4dte/resource/S2B_35TNJ_20200601_0_L2A> <http://ai.di.uoa.gr/da4dte/ontology/hasTimestamp> "2020-06-01T09:08:17.467000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://ai.di.uoa.gr/da4dte/resource/S2A_35TNJ_20200629_1_L2A> <http://ai.di.uoa.gr/da4dte/ontology/hasTimestamp> "2020-06-29T09:18:17.124000Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+<http://kr.di.uoa.gr/yago2geo/resource/Geometry_gadm_FRA.11.5.2.8.7_1> <http://www.opengis.net/ont/geosparql#asWKT> "<http://www.opengis.net/def/crs/EPSG/0/4326>  POLYGON ((0.301501452922935 43.955795288086,0.288511723279896 43.9576416015625,0.273372888565007 43.9512329101563,0.269479930400848 43.9570426940919,0.256465703249091 43.9611816406251,0.260124117136115 43.9675521850586,0.258416533470154 43.9742813110352,0.265154302120209 43.9905700683595,0.273552358150539 43.9980545043945,0.282437652349586 43.9979858398439,0.303003638982773 43.991237640381,0.305492788553295 43.9939918518066,0.304331511259079 43.9874267578126,0.309333622455597 43.9821281433105,0.301261425018367 43.9706115722656,0.299776464700813 43.964054107666,0.302861064672527 43.9615707397462,0.301501452922935 43.955795288086))"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .
+<http://kr.di.uoa.gr/yago2geo/resource/Geometry_gadm_FRA.12.2.1.8.4_1> <http://www.opengis.net/ont/geosparql#asWKT> "<http://www.opengis.net/def/crs/EPSG/0/2100>  POLYGON ((-0.149299964308739 47.4607849121095,-0.150352612137738 47.4642257690431,-0.164178743958416 47.468433380127,-0.173671722412053 47.4656372070312,-0.188863918185177 47.4666442871094,-0.196880787611008 47.4622879028321,-0.216680958867073 47.4601745605469,-0.209648966789132 47.4740562438966,-0.213021144270897 47.4866180419922,-0.19718483090395 47.4947319030762,-0.197227820754051 47.5045661926271,-0.169355809688568 47.5096359252931,-0.165166884660664 47.5035591125489,-0.151218935847226 47.5003700256349,-0.137224510312024 47.4909210205079,-0.151476666331291 47.4819602966309,-0.132629886269569 47.4789619445801,-0.125540807843208 47.475440979004,-0.125679507851601 47.4723587036133,-0.149299964308739 47.4607849121095))"^^<http://www.opengis.net/ont/geosparql#wktLiteral> .

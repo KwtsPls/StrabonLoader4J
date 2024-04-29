@@ -28,6 +28,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -315,7 +316,7 @@ public class TripleHandler {
                         objId = ValueHandler.assignId(AllValueTypes.NUMERIC);
 
                         try {
-                            LoaderGlobals.numericsOutput.write(objId+","+Double.parseDouble(object.toString())+"\n");
+                            LoaderGlobals.numericsOutput.write(objId+","+Double.parseDouble((String)object.getLiteralValue().toString())+"\n");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -344,7 +345,7 @@ public class TripleHandler {
                         }
 
                         try {
-                            LoaderGlobals.datetimeOutput.write(objId+","+convertDateTimeToMilliseconds(object.toString())+"\n");
+                            LoaderGlobals.datetimeOutput.write(objId+","+convertDateTimeToMilliseconds(object.getLiteralValue().toString())+"\n");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -381,6 +382,20 @@ public class TripleHandler {
                             if (locateDelimiter == -1) {
                                 // No SRID specified => 4326
                                 wkt = spatialLiteral;
+
+                                //Check if the geometry is in the new wkt styel
+                                locateDelimiter = spatialLiteral.indexOf("<");
+
+                                //EPSG exists in front of the polygon
+                                if(locateDelimiter==1){
+                                    int endDelimiter = spatialLiteral.indexOf(">");
+                                    String epsg = spatialLiteral.substring(0,endDelimiter);
+                                    wkt = spatialLiteral.substring(endDelimiter+1);
+
+                                    String sridStr = epsg.substring(epsg.lastIndexOf('/') + 1);
+                                    srid = Integer.parseInt(sridStr.replaceAll("\"",""));
+                                }
+
                             } else {
                                 wkt = spatialLiteral.substring(0, locateDelimiter);
                                 // Extract SRID from the spatial literal
@@ -406,7 +421,7 @@ public class TripleHandler {
 
                                     // Convert WKT to GEOS geometry directly
                                     WKTReader wktReader = new WKTReader();
-                                    Geometry geomTransformed = wktReader.read(spatialLiteral.replace("\"",""));
+                                    Geometry geomTransformed = wktReader.read(wkt.replace("\"",""));
                                     Geometry transformedGeometry = JTS.transform(geomTransformed,transform);
 
                                     // Convert JTS geometry to WKB
@@ -689,16 +704,12 @@ public class TripleHandler {
     }
 
     private long convertDateTimeToMilliseconds(String dateTime) {
-        // Remove ":" characters from the date-time string
-        dateTime = dateTime.replace(":", "");
 
-        // Remove "-" characters from the date-time string
-        dateTime = dateTime.replace("-", "");
+        // Define the formatter for xsd:datetime format
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
 
-        // Convert the string to LocalDateTime
-        LocalDateTime localDateTime = LocalDateTime.parse(dateTime);
-
-        // Convert LocalDateTime to milliseconds since Unix epoch
+        // Parse the datetime string
+        LocalDateTime localDateTime = LocalDateTime.parse(dateTime, formatter);
 
         return localDateTime.atOffset(ZoneOffset.UTC).toInstant().toEpochMilli();
     }

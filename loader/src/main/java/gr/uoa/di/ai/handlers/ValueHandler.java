@@ -260,6 +260,9 @@ public class ValueHandler {
         return (datatype.equals("http://strdf.di.uoa.gr/ontology#WKT")
                 ||datatype.equals("http://www.opengis.net/ont/geosparql#wktLiteral")
                 ||datatype.equals("http://www.opengis.net/ont/geosparql#gmlLiteral")
+                ||datatype.equals("http://strdf.di.uoa.gr/ontology#wkt")
+                ||datatype.equals("http://www.opengis.net/ont/geosparql#wktliteral")
+                ||datatype.equals("http://www.opengis.net/ont/geosparql#gmlliteral")
         );
     }
 
