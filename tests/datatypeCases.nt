@@ -1,0 +1,5 @@
+_:Lolek <http://www.example.com#petName> "cat"^^<http://www.example.com#Dat1> .
+_:Lolek <http://www.example.com#petName> "dog"^^<http://www.example.com#Dat2> .
+_:Lolek <http://www.example.com#petName> "dog"^^<http://www.example.com#Dat1> .
+_:Lolek <http://www.example.com#petName> "dog".
+

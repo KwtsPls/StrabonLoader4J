@@ -1,0 +1,12 @@
+ALTER TABLE bnode_values ADD CONSTRAINT bnode_values_pkey PRIMARY KEY (id);
+ALTER TABLE datatype_values ADD CONSTRAINT datatype_values_pkey PRIMARY KEY (id);
+ALTER TABLE datetime_values ADD CONSTRAINT datetime_values_pkey PRIMARY KEY (id);
+ALTER TABLE hash_values ADD CONSTRAINT hash_values_pkey PRIMARY KEY (id);
+CREATE INDEX hash_values_hash_idx ON hash_values USING btree (value);
+ALTER TABLE label_values ADD CONSTRAINT label_values_pkey PRIMARY KEY (id);
+ALTER TABLE language_values ADD CONSTRAINT language_values_pkey PRIMARY KEY (id);
+ALTER TABLE long_label_values ADD CONSTRAINT long_label_values_pkey PRIMARY KEY (id);
+ALTER TABLE long_uri_values ADD CONSTRAINT long_uri_values_pkey PRIMARY KEY (id);
+ALTER TABLE numeric_values ADD CONSTRAINT numeric_values_pkey PRIMARY KEY (id);
+ALTER TABLE uri_values ADD CONSTRAINT uri_values_pkey PRIMARY KEY (id);
+ALTER TABLE geo_values ADD CONSTRAINT geo_values_pkey PRIMARY KEY(id);

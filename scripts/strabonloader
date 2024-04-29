@@ -1,0 +1,48 @@
+#! /bin/bash
+
+# command name
+CMD="$(basename ${0})"
+# absolute directory name of this command
+LOC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+function help() {
+	echo "Usage: ${CMD} DATABASE (INPUT-FILE GRAPH)*"
+	echo 
+	echo "Interface to store N-TRIPLES files in Strabon databases using StrabonLoader"
+	echo
+	echo "	INPUT-FILE: the N-TRIPLES file to store"
+	echo "	DATABASE: the database to store to"
+} 
+
+if test $# -lt 2; then
+	help
+	exit -1	
+fi
+
+# database to load the file
+DB=$1
+# input files and graphs
+shift
+FILES=$*
+
+# absolute directory name of filler
+BIN=${LOC}/..
+
+# store the absolute path of input file
+FILE="`readlink -e ${FILE}`"
+
+cd ${BIN}
+
+# Create CSV files of input file
+./filler ${FILE}
+echo "`ls -1 ${BIN}/*csv|wc -l` CSV files created"
+
+rm LoadingScripts/postgis/*csv
+mv *.csv LoadingScripts/postgis/
+
+cd LoadingScripts/postgis
+./import ${DB} 
+
+rm *csv 
+
+echo "File loaded. CSV files deleted"

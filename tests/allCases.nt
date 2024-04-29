@@ -1,0 +1,6 @@
+<http://www.example.com#Oclahoma> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.com#State> .
+_:Bermudas <http://www.example.com#name> "Brahames" .
+<http://www.example.com#Oclahoma> <http://www.example.com#name> "Bahamas"^^<http://strdf.di.uoa.gr/ontology#SemiLinear> .
+<http://www.example.com#Oclahoma> <http://www.example.com#size> "27"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<http://www.example.com#Oclahoma> <http://www.example.com#actualName> "cat"@en .
+<http://www.example.com#Oclahoma> <http://www.example.com#inXML> "dummy"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral>.

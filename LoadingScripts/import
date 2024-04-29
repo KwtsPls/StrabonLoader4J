@@ -1,0 +1,176 @@
+#!/bin/bash
+BASE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+usage(){
+	echo "Usage: $0 database"
+	exit 1
+}
+
+[[ $# -eq 0 ]] && usage
+
+db=$1
+prepare=false
+
+sql="select count(1) from pg_catalog.pg_database where datname = '$db'"
+cmd="psql -t -c \"$sql\""
+db_exists=`eval $cmd`
+if [ $db_exists -eq 1 ] ; then
+	echo "Database already exists."
+	exit 1
+fi
+
+create=`createdb -T template_postgis $db`
+
+if [ "$create" != "" ] ; then
+	echo "Oups!"
+	echo "$create"
+	exit 1
+fi
+
+date;
+
+function timer()
+{
+    if [[ $# -eq 0 ]]; then
+        echo $(date '+%s')
+    else
+        local  stime=$1
+        etime=$(date '+%s')
+
+        if [[ -z "$stime" ]]; then stime=$etime; fi
+
+        dt=$((etime - stime))
+        ds=$((dt % 60))
+        dm=$(((dt / 60) % 60))
+        dh=$((dt / 3600))
+        printf '%d:%02d:%02d' $dh $dm $ds
+    fi
+}
+
+#clean labels: delete empty lines and ^M
+#cat labels.csv | sed '/^$/d' | sed 's///g' > /tmp/labels.$$.tmp
+#mv /tmp/labels.$$.tmp labels.csv
+#cat long_labels.csv | sed '/^$/d' | sed 's/^M//g' > /tmp/long_labels.$$.tmp
+#mv /tmp/long_labels.$$.tmp long_labels.csv
+#cat uris.csv|sed '/^$/d'|sed 's/,/\\,/2g' > /tmp/uris.$$.tmp
+#mv /tmp/uris.$$.tmp uris.csv
+#cat long_uris.csv|sed '/^$/d'|sed 's/,/\\,/2g' > /tmp/long_uris.$$.tmp
+#mv /tmp/long_uris.$$.tmp long_uris.csv
+# sed -i '10378819 d' labels.csv
+
+pwdpath=`pwd`;
+
+if [ -e $db.log ] ; then
+	mv $db.log $db.log.bak
+fi
+
+#dictionary
+#load normal
+F1="/tmp/dictionary.$$.tmp"
+sed -e "s#PWDPATH#$pwdpath#g" $BASE/import_dictionary.sql > $F1;
+tmr1=$(timer)
+psql -f $F1 $db;
+tmr2=$(timer)
+printf 'DICTIONARY %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
+rm $F1;
+
+#load spatial
+F1="/tmp/dictionary.$$.tmp"
+sed -e "s#PWDPATH#$pwdpath#g" $BASE/import_dictionary_spatial.sql > $F1;
+tmr1=$(timer)
+psql -f $F1 $db;
+tmr2=$(timer)
+printf 'DICTIONARYSPATIAL %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
+rm $F1;
+
+#index normal
+F1="/tmp/dictionary.$$.tmp"
+sed -e "s#PWDPATH#$pwdpath#g" $BASE/import_dictionary_index.sql > $F1;
+psql -f $F1 $db;
+tmr2=$(timer)
+printf 'DICTIONARYINDEX %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
+rm $F1;
+
+#index spatial
+F1="/tmp/dictionary.$$.tmp"
+sed -e "s#PWDPATH#$pwdpath#g" $BASE/import_dictionary_index_spatial.sql > $F1;
+tmr1=$(timer)
+psql -f $F1 $db;
+tmr2=$(timer)
+printf 'DICTIONARYINDEXSPATIAL %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
+rm $F1;
+
+#preparing predicates
+if $prepare ; then
+	if test ! -d "bak"; then
+	  mkdir bak
+	fi
+	tmr1=$(timer)
+	for file in `ls -1 *.csv|grep -v "geo_values"|grep -v "long_labels"|grep -v "long_uris" |grep "_"`;
+	do
+	        #eliminate duplicates from predicate values
+	        mv $file bak/;cat bak/$file|sort|uniq>$file;
+	done;
+	tmr2=$(timer)
+	printf 'PREPAREPREDICATES %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
+fi
+
+#load predicates
+tmr1=$(timer)
+for file in `ls -1 *.csv|grep -v "geo_values"|grep -v "long_labels"|grep -v "long_uris" |grep "_"`;
+do
+	#eliminate duplicates from predicate values
+        #mv $file bak/;cat bak/$file|sort|uniq>$file;
+
+        filenoext=`echo $file|sed -e 's/\.[a-zA-Z]*$//'`
+        F1="/tmp/predicate.$filenoext.$$.tmp"
+	sed -e "s#PREDICATEWITHID#$filenoext#g;s#PWDPATH#$pwdpath#g" $BASE/import_predicate.sql > $F1;
+	psql -f $F1 $db;
+	rm $F1;
+done;
+tmr2=$(timer)
+printf 'PREDICATES %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
+
+#create indices for predicate tables
+tmr1=$(timer)
+for file in `ls -1 *.csv|grep -v "geo_values"|grep -v "long_labels"|grep -v "long_uris" |grep "_"`;
+do
+        filenoext=`echo $file|sed -e 's/\.[a-zA-Z]*$//'`
+        F1="/tmp/predicate.$filenoext.$$.tmp"
+        sed -e "s#PREDICATEWITHID#$filenoext#g;s#PWDPATH#$pwdpath#g" $BASE/import_predicate_index.sql > $F1;
+	psql -f $F1 $db;
+        rm $F1;
+done;
+tmr2=$(timer)
+printf 'PREDICATESINDEX %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
+
+if [[ -e triples.csv ]] ; then
+        #eliminate duplicates
+        #mv triples.csv bak/; sort -u bak/triples.csv>triples.csv;
+
+        tmr1=$(timer)
+        file=triples.csv
+        filenoext=`echo $file|sed -e 's/\.[a-zA-Z]*$//'`
+        F1="/tmp/triples.$filenoext.$$.tmp"
+        sed -e "s#PWDPATH#$pwdpath#g" $BASE/import_triples.sql > $F1;
+        psql -f $F1 $db;
+        rm $F1;
+        tmr2=$(timer)
+        printf 'TRIPLES %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
+
+        tmr1=$(timer)
+        file=triples.csv
+        filenoext=`echo $file|sed -e 's/\.[a-zA-Z]*$//'`
+        F1="/tmp/predicate.$filenoext.$$.tmp"
+        sed -e "s#PWDPATH#$pwdpath#g" $BASE/import_triples_index.sql > $F1;
+        psql -f $F1 $db;
+        rm $F1;
+        tmr2=$(timer)
+        printf 'TRIPLESINDEX %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
+fi
+
+#vacuum
+tmr1=$(timer)
+echo "VACUUM ANALYZE;" | psql $db;
+tmr2=$(timer)
+printf 'VACUUM %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log

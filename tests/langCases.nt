@@ -1,0 +1,4 @@
+_:Lolek <http://www.example.com#petAge> "cat"@en .
+_:Lolek <http://www.example.com#petAge> "dog"@ru .
+_:Lolek <http://www.example.com#petAge> "dog"@ru .
+_:Lolek <http://www.example.com#petAge> "dog".

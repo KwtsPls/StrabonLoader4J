@@ -1,0 +1,4 @@
+_:Lolek <http://www.example.com#petAge> "17"^^<http://www.w3.org/2001/XMLSchema#long> .
+_:Lolek <http://www.example.com#petAge> "17"^^<http://www.w3.org/2001/XMLSchema#int> .
+_:Lolek <http://www.example.com#petAge> "12"^^<http://www.w3.org/2001/XMLSchema#short> .
+_:Lolek <http://www.example.com#petAge> "12".

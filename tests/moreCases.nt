@@ -1,0 +1,12 @@
+<http://www.example.com#Oclahoma> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.com#State> .
+<http://www.example.com#Oclahoma> <http://www.example.com#name> "Oclahoma" .
+<http://www.example.com#Oclahoma> <http://www.example.com#size> "27"^^<http://www.w3.org/2001/XMLSchema#integer> .
+_:Bolek <http://www.example.com#residentOf> <http://www.example.com#Oclahoma> .
+_:Bolek <http://www.example.com#firstName> "Bolek"^^<http://strdf.di.uoa.gr/ontology#FirstName> .
+_:Bolek <http://www.example.com#lastName> "Koutroumpas"^^<http://strdf.di.uoa.gr/ontology#FirstName> .
+_:Bolek <http://www.example.com#siblingName> "Lolek".
+_:Lolek <http://www.example.com#petName> "cat"@en .
+_:Lolek <http://www.example.com#plainName> "Lolek".
+_:Lolek <http://www.example.com#inXML> "dummy"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral>.
+_:Lolek <http://www.example.com#lastName> "Koutroumpas"^^<http://strdf.di.uoa.gr/ontology#FirstName> .
+_:Lolek <http://www.example.com#petName> "dog"@en .
