@@ -446,9 +446,7 @@ public class TripleHandler {
                             }
 
                             // Write GEOS geometry to output stream in HEX format
-                            WKBWriter wkbWriter = new WKBWriter();
                             try {
-                                wkbWriter.write(geosGeom, LoaderGlobals.geoOutput);
                                 String geoHex = WKBWriter.toHex(geosGeom.toString().getBytes());
                                 LoaderGlobals.geoOutput.write(geoHex.getBytes(),geoHex.getBytes().length);
                                 LoaderGlobals.geoOutput.write(("," + srid + "\n").getBytes(),("," + srid + "\n").getBytes().length);
