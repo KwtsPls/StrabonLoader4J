@@ -34,13 +34,13 @@ FILE="`readlink -e ${FILE}`"
 cd ${BIN}
 
 # Create CSV files of input file
-./filler ${FILE}
+java -jar ../target/loader-1.0-SNAPSHOT.jar Loader ${FILE}
 echo "`ls -1 ${BIN}/*csv|wc -l` CSV files created"
 
-rm LoadingScripts/postgis/*csv
-mv *.csv LoadingScripts/postgis/
+rm LoadingScripts/*csv
+mv *.csv LoadingScripts/
 
-cd LoadingScripts/postgis
+cd LoadingScripts/
 ./import ${DB} 
 
 rm *csv 
