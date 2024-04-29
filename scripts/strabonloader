@@ -23,24 +23,25 @@ fi
 DB=$1
 # input files and graphs
 shift
-FILES=$*
+FILES=$* 
 
 # absolute directory name of filler
-BIN=${LOC}/..
+BIN=${LOC}/../loader
 
 # store the absolute path of input file
-FILE="`readlink -e ${FILE}`"
+FILE="`readlink -e ${FILES}`"
 
 cd ${BIN}
+echo ${BIN}
 
 # Create CSV files of input file
-java -jar ../target/loader-1.0-SNAPSHOT.jar Loader ${FILE}
+java -jar target/loader-1.0-SNAPSHOT.jar Loader ${FILES}
 echo "`ls -1 ${BIN}/*csv|wc -l` CSV files created"
 
-rm LoadingScripts/*csv
-mv *.csv LoadingScripts/
+rm ../LoadingScripts/*csv
+mv *.csv ../LoadingScripts/
 
-cd LoadingScripts/
+cd ../LoadingScripts/
 ./import ${DB} 
 
 rm *csv 
