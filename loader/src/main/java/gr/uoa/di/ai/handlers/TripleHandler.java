@@ -446,9 +446,10 @@ public class TripleHandler {
                             }
 
                             // Write GEOS geometry to output stream in HEX format
+                            WKBWriter wkbWriter = new WKBWriter();
                             try {
-                                String geoHex = WKBWriter.toHex(geosGeom.toString().getBytes());
-                                LoaderGlobals.geoOutput.write(geoHex.getBytes(),geoHex.getBytes().length);
+                                byte[]  geoBytes = wkbWriter.write(geosGeom);
+                                LoaderGlobals.geoOutput.write(geoBytes,geoBytes.length);
                                 LoaderGlobals.geoOutput.write(("," + srid + "\n").getBytes(),("," + srid + "\n").getBytes().length);
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -532,7 +533,7 @@ public class TripleHandler {
         _Triple tmp = new _Triple(LoaderGlobals.graphId,subjId,predId,objId,true);
 
         try {
-            whereToStore.write(tmp.getCtx()+","+tmp.getSubj()+","+tmp.getPred()+","+tmp.getObj()+","+tmp.isExpl()+"\n");
+            whereToStore.write(tmp.getCtx()+","+tmp.getSubj()+","+tmp.getObj()+","+tmp.isExpl()+"\n");
         } catch (IOException e) {
             System.out.println("File append for Predicate Table failed!!");
             e.printStackTrace();
