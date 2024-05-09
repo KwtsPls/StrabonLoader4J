@@ -129,11 +129,11 @@ public class TripleHandler {
             if(uri_id==null && long_uri_id==null){
                 if(ValueHandler.isLong(subject.toString())){
                     predId = ValueHandler.assignId(AllValueTypes.URI_LONG);
-                    LoaderGlobals.long_uri_values.put(predicate.toString(),subjId);
+                    LoaderGlobals.long_uri_values.put(predicate.toString(),predId);
                 }
                 else{
                     predId = ValueHandler.assignId(AllValueTypes.URI);
-                    LoaderGlobals.uri_values.put(predicate.toString(),subjId);
+                    LoaderGlobals.uri_values.put(predicate.toString(),predId);
                 }
             }
             else{
