@@ -132,9 +132,9 @@ public class LoaderGlobals {
             for (Map.Entry<String, Integer> entry : uri_values.entrySet()) {
                 String uri = entry.getKey();
                 Integer value = entry.getValue();
-                writer1.append(escapeLiteral4CSV(uri));
-                writer1.append(",");
                 writer1.append(value.toString());
+                writer1.append(",");
+                writer1.append(escapeLiteral4CSV(uri));
                 writer1.append("\n");
             }
         } catch (IOException e) {
@@ -145,9 +145,9 @@ public class LoaderGlobals {
             for (Map.Entry<String, Integer> entry : long_uri_values.entrySet()) {
                 String uri = entry.getKey();
                 Integer value = entry.getValue();
-                writer2.append(escapeLiteral4CSV(uri));
-                writer2.append(",");
                 writer2.append(value.toString());
+                writer2.append(",");
+                writer2.append(escapeLiteral4CSV(uri));
                 writer2.append("\n");
             }
         } catch (IOException e) {
