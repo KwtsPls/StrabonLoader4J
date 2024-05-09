@@ -35,8 +35,10 @@ import java.util.regex.Pattern;
 
 public class TripleHandler {
 
-    public TripleHandler(){
+    int item;
 
+    public TripleHandler(){
+        this.item=0;
     }
 
     public void handle(Triple triple) {
@@ -99,6 +101,7 @@ public class TripleHandler {
                 LoaderGlobals.previousId = subjId;
             }
         }
+        item++;
 
         if(mustStore){
             hashValueSubj = hashOf(subject.toString(),getNodeType(subject),null,null);
@@ -120,17 +123,17 @@ public class TripleHandler {
 
         PredicateContent pc = LoaderGlobals.predicates.get(predicate.toString());
         if(pc==null){
-            Integer uri_id = LoaderGlobals.uri_values.get(subject.toString());
-            Integer long_uri_id = LoaderGlobals.long_uri_values.get(subject.toString());
+            Integer uri_id = LoaderGlobals.uri_values.get(predicate.toString());
+            Integer long_uri_id = LoaderGlobals.long_uri_values.get(predicate.toString());
 
             if(uri_id==null && long_uri_id==null){
                 if(ValueHandler.isLong(subject.toString())){
                     predId = ValueHandler.assignId(AllValueTypes.URI_LONG);
-                    LoaderGlobals.long_uri_values.put(subject.toString(),subjId);
+                    LoaderGlobals.long_uri_values.put(predicate.toString(),subjId);
                 }
                 else{
                     predId = ValueHandler.assignId(AllValueTypes.URI);
-                    LoaderGlobals.uri_values.put(subject.toString(),subjId);
+                    LoaderGlobals.uri_values.put(predicate.toString(),subjId);
                 }
             }
             else{
@@ -448,8 +451,8 @@ public class TripleHandler {
                             // Write GEOS geometry to output stream in HEX format
                             WKBWriter wkbWriter = new WKBWriter();
                             try {
-                                byte[]  geoBytes = wkbWriter.write(geosGeom);
-                                LoaderGlobals.geoOutput.write(geoBytes,geoBytes.length);
+                                String  geoBytes = WKBWriter.toHex(wkbWriter.write(geosGeom));
+                                LoaderGlobals.geoOutput.write(geoBytes.getBytes(),geoBytes.getBytes().length);
                                 LoaderGlobals.geoOutput.write(("," + srid + "\n").getBytes(),("," + srid + "\n").getBytes().length);
                             } catch (IOException e) {
                                 e.printStackTrace();
