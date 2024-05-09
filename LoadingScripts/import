@@ -12,14 +12,14 @@ db=$1
 prepare=false
 
 sql="select count(1) from pg_catalog.pg_database where datname = '$db'"
-cmd="psql -U postgres -t -c \"$sql\""
+cmd="PGPASSWORD=postgres psql -U postgres -t -c \"$sql\""
 db_exists=`eval $cmd`
 if [ $db_exists -eq 1 ] ; then
 	echo "Database already exists."
 	exit 1
 fi
 
-create=`createdb -U postgres -T template_postgis $db`
+create=`PGPASSWORD=postgres createdb -U postgres -T template_postgis $db`
 
 if [ "$create" != "" ] ; then
 	echo "Oups!"
@@ -70,7 +70,7 @@ F1="/tmp/dictionary.$$.tmp"
 sed -e "s#PWDPATH#$pwdpath#g" $BASE/import_dictionary.sql > $F1;
 tmr1=$(timer)
 echo "psql -U postgres -f $F1 $db";
-psql -U postgres -f $F1 $db;
+PGPASSWORD=postgres psql -U postgres -f $F1 $db;
 tmr2=$(timer)
 printf 'DICTIONARY %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
 rm $F1;
@@ -79,7 +79,7 @@ rm $F1;
 F1="/tmp/dictionary.$$.tmp"
 sed -e "s#PWDPATH#$pwdpath#g" $BASE/import_dictionary_spatial.sql > $F1;
 tmr1=$(timer)
-psql -U postgres -f $F1 $db;
+PGPASSWORD=postgres psql -U postgres -f $F1 $db;
 tmr2=$(timer)
 printf 'DICTIONARYSPATIAL %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
 rm $F1;
@@ -87,7 +87,7 @@ rm $F1;
 #index normal
 F1="/tmp/dictionary.$$.tmp"
 sed -e "s#PWDPATH#$pwdpath#g" $BASE/import_dictionary_index.sql > $F1;
-psql -U postgres -f $F1 $db;
+PGPASSWORD=postgres psql -U postgres -f $F1 $db;
 tmr2=$(timer)
 printf 'DICTIONARYINDEX %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
 rm $F1;
@@ -96,7 +96,7 @@ rm $F1;
 F1="/tmp/dictionary.$$.tmp"
 sed -e "s#PWDPATH#$pwdpath#g" $BASE/import_dictionary_index_spatial.sql > $F1;
 tmr1=$(timer)
-psql -U postgres -f $F1 $db;
+PGPASSWORD=postgres psql -U postgres -f $F1 $db;
 tmr2=$(timer)
 printf 'DICTIONARYINDEXSPATIAL %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
 rm $F1;
@@ -126,7 +126,7 @@ do
         filenoext=`echo $file|sed -e 's/\.[a-zA-Z]*$//'`
         F1="/tmp/predicate.$filenoext.$$.tmp"
 	sed -e "s#PREDICATEWITHID#$filenoext#g;s#PWDPATH#$pwdpath#g" $BASE/import_predicate.sql > $F1;
-	psql -U postgres -f $F1 $db;
+	PGPASSWORD=postgres psql -U postgres -f $F1 $db;
 	rm $F1;
 done;
 tmr2=$(timer)
@@ -139,7 +139,7 @@ do
         filenoext=`echo $file|sed -e 's/\.[a-zA-Z]*$//'`
         F1="/tmp/predicate.$filenoext.$$.tmp"
         sed -e "s#PREDICATEWITHID#$filenoext#g;s#PWDPATH#$pwdpath#g" $BASE/import_predicate_index.sql > $F1;
-	psql -U postgres -f $F1 $db;
+	PGPASSWORD=postgres psql -U postgres -f $F1 $db;
         rm $F1;
 done;
 tmr2=$(timer)
@@ -154,7 +154,7 @@ if [[ -e triples.csv ]] ; then
         filenoext=`echo $file|sed -e 's/\.[a-zA-Z]*$//'`
         F1="/tmp/triples.$filenoext.$$.tmp"
         sed -e "s#PWDPATH#$pwdpath#g" $BASE/import_triples.sql > $F1;
-        psql -U postgres -f $F1 $db;
+        PGPASSWORD=postgres psql -U postgres -f $F1 $db;
         rm $F1;
         tmr2=$(timer)
         printf 'TRIPLES %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
@@ -164,7 +164,7 @@ if [[ -e triples.csv ]] ; then
         filenoext=`echo $file|sed -e 's/\.[a-zA-Z]*$//'`
         F1="/tmp/predicate.$filenoext.$$.tmp"
         sed -e "s#PWDPATH#$pwdpath#g" $BASE/import_triples_index.sql > $F1;
-        psql -U postgres -f $F1 $db;
+        PGPASSWORD=postgres psql -U postgres -f $F1 $db;
         rm $F1;
         tmr2=$(timer)
         printf 'TRIPLESINDEX %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log
@@ -172,6 +172,6 @@ fi
 
 #vacuum
 tmr1=$(timer)
-echo "VACUUM ANALYZE;" | psql -U postgres $db;
+echo "VACUUM ANALYZE;" | PGPASSWORD=postgres psql -U postgres $db;
 tmr2=$(timer)
 printf 'VACUUM %s %s\n' $((tmr2-tmr1)) $(timer $tmr1) >> $db.log

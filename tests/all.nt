@@ -64,8 +64,6 @@ _:Lolek <http://www.example.com#plainName> "Lolek".
 _:Lolek <http://www.example.com#inXML> "dummy"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral>.
 _:Lolek <http://www.example.com#lastName> "Koutroumpas"^^<http://strdf.di.uoa.gr/ontology#FirstName> .
 _:Lolek <http://www.example.com#petName> "dog"@en .
-<http://strdf.di.uoa.gr/ontology#Instance1> <http://strdf.di.uoa.gr/ontology#hasGeometry> "POINT(510457.300375 4150059.924838);http://www.opengis.net/def/crs/EPSG/0/2100"^^<http://strdf.di.uoa.gr/ontology#WKT> .
-<http://strdf.di.uoa.gr/ontology#Instance2> <http://strdf.di.uoa.gr/ontology#hasGeometry> "POINT(24.118304 37.497404);http://www.opengis.net/def/crs/EPSG/0/4121"^^<http://strdf.di.uoa.gr/ontology#WKT> .
 <http://strdf.di.uoa.gr/ontology#Instance3> <http://strdf.di.uoa.gr/ontology#hasGeometry> "POINT(24.12 37.5)"^^<http://strdf.di.uoa.gr/ontology#WKT> .
 _:Lolek <http://www.example.com#petAge> "17"^^<http://www.w3.org/2001/XMLSchema#long> .
 _:Lolek <http://www.example.com#petAge> "17"^^<http://www.w3.org/2001/XMLSchema#int> .
@@ -76,7 +74,7 @@ _:Bermudas <http://www.example.com#name> "Brahames" .
 <http://www.example.com#Oclahoma> <http://www.example.com#name> "Bahamas"^^<http://strdf.di.uoa.gr/ontology#SemiLinear> .
 <http://www.example.com#Oclahoma> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.example.com#State> .
 _:Bermudas <http://www.example.com#name> "Brahames" .
-<http://www.example.com#Oclahoma> <http://www.example.com#name> "Bahamas"^^<http://strdf.di.uoa.gr/ontology#SemiLinear> .<http://strdf.di.uoa.gr/ontology#Instance3> <http://strdf.di.uoa.gr/ontology#hasGeometry> "POINT(24.12 37.5)"^^<http://strdf.di.uoa.gr/ontology#WKT> .
+<http://www.example.com#Oclahoma> <http://www.example.com#name> "Bahamas"^^<http://strdf.di.uoa.gr/ontology#SemiLinear> .
 <http://www.di.uoa.gr/lalakis,pwpw> <http://lalakis.com.gr/p> "" .
 <http://www.di.uoa.gr/lalakis,pwpw> <http://lalakis.com.gr/p> "alaLiiii^Mmlalal" .
 <http://linkedgeodata.org/triplify/node622380559> <http://www.w3.org/2000/01/rdf-schema#label> "Papperinsamling, Hermelinparken"@sv .
