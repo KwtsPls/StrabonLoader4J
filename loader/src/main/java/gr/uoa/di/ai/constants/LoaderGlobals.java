@@ -207,7 +207,6 @@ public class LoaderGlobals {
         }
         for (Map.Entry<LabelDatatype, Integer> entry : label_datatype.entrySet()) {
             String lbl = entry.getKey().getLabel();
-            System.out.println("end : " + lbl);
             lbl = escapeLiteral4CSV(lbl);
 
             try {
