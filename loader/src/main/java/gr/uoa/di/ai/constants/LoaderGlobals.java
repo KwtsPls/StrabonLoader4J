@@ -166,7 +166,7 @@ public class LoaderGlobals {
         }
         for (Map.Entry<LabelLang, Integer> entry : label_lang.entrySet()) {
             String lbl = entry.getKey().getLabel();
-            escapeLiteral4CSV(lbl);
+            lbl = escapeLiteral4CSV(lbl);
 
             try {
                 myfile1.write(entry.getValue() + "," + lbl + "\n");
@@ -186,7 +186,7 @@ public class LoaderGlobals {
             myfile2 = new FileWriter(LoaderGeneralConstants.CSV_LONG_LABELS, true);
             for (Map.Entry<LabelLang, Integer> entry : long_label_lang.entrySet()) {
                 String lbl = entry.getKey().getLabel();
-                escapeLiteral4CSV(lbl);
+                lbl = escapeLiteral4CSV(lbl);
 
                 myfile2.write(entry.getValue() + "," + lbl + "\n");
             }
@@ -207,7 +207,7 @@ public class LoaderGlobals {
         }
         for (Map.Entry<LabelDatatype, Integer> entry : label_datatype.entrySet()) {
             String lbl = entry.getKey().getLabel();
-            escapeLiteral4CSV(lbl);
+            lbl = escapeLiteral4CSV(lbl);
 
             try {
                 myfile1.write(entry.getValue() + "," + lbl + "\n");
@@ -227,7 +227,7 @@ public class LoaderGlobals {
             myfile2 = new FileWriter(LoaderGeneralConstants.CSV_LONG_LABELS, true);
             for (Map.Entry<LabelDatatype, Integer> entry : long_label_datatype.entrySet()) {
                 String lbl = entry.getKey().getLabel();
-                escapeLiteral4CSV(lbl);
+                lbl = escapeLiteral4CSV(lbl);
 
                 myfile2.write(entry.getValue() + "," + lbl + "\n");
             }
