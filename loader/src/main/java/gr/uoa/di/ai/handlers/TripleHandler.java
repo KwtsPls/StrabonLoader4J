@@ -676,7 +676,7 @@ public class TripleHandler {
     private String escapeCommas(String value){
         // Remove any newline characters from the input string
         value = value.replaceAll("\\\\","\\\\\\\\");
-        value = value.replaceAll("\n", "");
+        /*value = value.replaceAll("\n", "");
 
         // Define StringBuilder to store the parsed object
         StringBuilder parsedObjectBuilder = new StringBuilder();
@@ -700,10 +700,10 @@ public class TripleHandler {
         }
 
         // Append the remaining part of the string after the last comma
-        parsedObjectBuilder.append(value.substring(wordBegin));
+        parsedObjectBuilder.append(value.substring(wordBegin));*/
 
         // Convert StringBuilder to a String
-        return parsedObjectBuilder.toString();
+        return value;
     }
 
     private long convertDateTimeToMilliseconds(String dateTime) {
