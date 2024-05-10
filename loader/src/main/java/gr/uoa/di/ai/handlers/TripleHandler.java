@@ -675,6 +675,7 @@ public class TripleHandler {
 
     private String escapeCommas(String value){
         // Remove any newline characters from the input string
+        value = value.replaceAll("\\\\","\\\\\\\\");
         value = value.replaceAll("\n", "");
 
         // Define StringBuilder to store the parsed object
@@ -714,31 +715,5 @@ public class TripleHandler {
         LocalDateTime localDateTime = LocalDateTime.parse(dateTime, formatter);
 
         return localDateTime.atOffset(ZoneOffset.UTC).toInstant().toEpochMilli();
-    }
-
-    // Convert byte array to hexadecimal string
-    private String bytesToHex(byte[] bytes) {
-        StringBuilder hexString = new StringBuilder();
-        for (byte b : bytes) {
-            hexString.append(String.format("%02x", b));
-        }
-        return hexString.toString();
-    }
-
-    private int extractEPSG(String input) {
-        // Define the pattern to match the EPSG number
-        Pattern pattern = Pattern.compile(".*EPSG/(\\d+).*");
-
-        // Match the pattern against the input string
-        Matcher matcher = pattern.matcher(input);
-
-        // Check if a match is found
-        if (matcher.find()) {
-            // Extract and return the EPSG number
-            return Integer.parseInt(matcher.group(1));
-        } else {
-            // Return a default value if no match is found
-            return -1; // Or throw an exception, depending on your requirements
-        }
     }
 }
