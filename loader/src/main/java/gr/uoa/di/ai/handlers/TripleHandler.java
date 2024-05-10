@@ -11,6 +11,7 @@ import gr.uoa.di.ai.types._Triple;
 import org.apache.jena.graph.Node;
 import org.apache.jena.graph.Node_Blank;
 import org.apache.jena.graph.Triple;
+import org.apache.jena.rdfxml.xmlinput.states.WantTypedLiteral;
 import org.apache.jena.riot.system.StreamRDF;
 import org.apache.jena.sparql.core.Quad;
 import org.geotools.geometry.jts.JTS;
@@ -192,8 +193,18 @@ public class TripleHandler {
         Node object = triple.getObject();
 
         if(getNodeType(object).equals("LITERAL")){
-            String parsedObject = escapeCommas(object.toString());
 
+            String o;
+            if(object.getLiteralValue().toString().contains("org.apache.jena.datatypes.BaseDatatype$TypedValue")){
+                String[] tokens = object.toString().split("\\^\\^");
+                o = tokens[0];
+                o = o.substring(1,o.length()-1);
+            }
+            else{
+                o = object.getLiteralValue().toString();
+            }
+
+            String parsedObject = escapeCommas(o);
             //Case 1: No Specific Datatype => LANG or SIMPLE
             if(getNodeDatatype(object)==null){
                 LabelLang l1 = null;
